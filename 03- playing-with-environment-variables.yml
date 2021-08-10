@@ -20,24 +20,28 @@ stages:
 #     - job: DevDeploy
 #       steps: 
 #        - bash: echo "Do the DevDeploy"
- - deployment: DevDeployjob
-    environment: QA
-    strategy: 
-     runOnce:
-      deploy:
-       steps:
-        - script: echo Deploy to Dev
- - deployment: QADeploy
-    environment: QA
-    strategy: 
-     runOnce:
-      deploy:
-       steps:
-        - script: echo Deploy to Dev
+ - stage: DevDeploy
+   jobs:
+   - deployment: DevDeployjob
+     environment: Dev
+     strategy: 
+      runOnce:
+        deploy:
+         steps:
+          - script: echo Deploy to Dev
+ - stage: QADeploy
+   jobs:
+    - deployment: QADeploy
+      environment: QA
+      strategy: 
+       runOnce:
+        deploy:
+         steps:
+          - script: echo Deploy to QA
 
 
 
-- script: |
-  #   echo Add other tasks to build, test, and deploy your project.
-  #   echo See https://aka.ms/yaml
-  # displayName: 'Run a multi-line script'
+# - script: |
+#   #   echo Add other tasks to build, test, and deploy your project.
+#   #   echo See https://aka.ms/yaml
+#   # displayName: 'Run a multi-line script'
