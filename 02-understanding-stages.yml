@@ -31,7 +31,14 @@ stages:
             TargetFolder: '$(Build.ArtifactStagingDirectory)'
             delayBetweenRetries: '10'
        - bash: ls -R $(Build.ArtifactStagingDirectory)
-       
+       - task: PublishBuildArtifacts@1
+         inputs:
+           PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+           ArtifactName: 'drop-first-artiface'
+           publishLocation: 'Container'
+
+
+
     # - job: SecondJob
     #   steps:
     #    - bash: echo Build SecondJob
