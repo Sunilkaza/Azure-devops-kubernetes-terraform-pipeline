@@ -10,29 +10,36 @@ stages:
     - job: FirstJob
       steps:
        - bash: echo Build FirstJob
+       - bash: echo $(PiplelineLevelVariable)
     - job: SecondJob
       steps:
        - bash: echo Build SecondJob
  - stage: DevDeploy
+   variables: 
+    Environment: Dev
    dependsOn: Build
    jobs:
     - job: DevDeployJob
       steps:
-       - bash: echo  DevDeployJob
+       - bash: echo $(Enviroment) DevDeployJob 
  - stage: QADeploy
+   variables: 
+    Environment: QA
    dependsOn: Build
    jobs:
     - job: QADeployJob
       steps:
-       - bash: echo  QADeployJob
+       - bash: echo $(Environment) QADeployJob
  - stage: ProdDeploy
+   variables:
+    Environment: Prod
    dependsOn: 
     - DevDeploy
     - QADeploy
    jobs:
     - job: ProdDeployJob
       steps:
-       - bash: echo  ProdDeployJob
+       - bash: echo  $(Environment) ProdDeployJob
 
 # - script: |
   #  echo Add other tasks to build, test, and deploy your project.
