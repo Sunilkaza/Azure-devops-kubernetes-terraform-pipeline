@@ -28,6 +28,10 @@ resource "azurerm_kubernetes_cluster" "terraform-k8s" {
     client_secret = var.client_secret
   }
 
+provider "azurerm" {
+  features {}
+  }
+  
   tags = {
     Environment = var.environment
   }
