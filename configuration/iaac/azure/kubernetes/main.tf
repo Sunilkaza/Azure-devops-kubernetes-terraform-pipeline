@@ -16,10 +16,9 @@ resource "azurerm_kubernetes_cluster" "terraform-k8s" {
       key_data = file(var.ssh_public_key)
     }
   }
-
-  provider "azurerm_resource_group" {
-  features {}
-  }
+provider "azurerm_resource_group" {
+ 
+}
   
   
   default_node_pool {
