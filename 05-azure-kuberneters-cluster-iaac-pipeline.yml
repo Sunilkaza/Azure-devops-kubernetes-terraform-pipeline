@@ -20,7 +20,7 @@ steps:
     backendServiceArm: 'azure-resource-manager-service-connection'
     ensureBackend: true
     backendAzureRmResourceGroupName: 'terraform-backend-rg'
-    backendAzureRmResourceGroupLocation: 'eastusa'
+    backendAzureRmResourceGroupLocation: 'eastus'
     backendAzureRmStorageAccountName: 'storageaccountkaza1985'
     backendAzureRmContainerName: 'storageaccountcontainer'
     backendAzureRmKey: 'kubernetes-dev.tfstate'
