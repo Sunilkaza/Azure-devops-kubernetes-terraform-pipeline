@@ -28,9 +28,6 @@ resource "azurerm_kubernetes_cluster" "terraform-k8s" {
     client_secret = var.client_secret
   }
 
-provider "azurerm" {
-  features {}
-  }
   
   tags = {
     Environment = var.environment
@@ -43,5 +40,8 @@ terraform {
     # access_key="<<storage_account_key>>" #OVERRIDE in TERRAFORM init
     # key="<<env_name.k8s.tfstate>>" #OVERRIDE in TERRAFORM init
     # container_name="<<storage_account_container_name>>" #OVERRIDE in TERRAFORM init
+  provider "azurerm" {
+  features {}
+  }
   }
 }
