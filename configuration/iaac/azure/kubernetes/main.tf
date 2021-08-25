@@ -28,17 +28,7 @@ resource "azurerm_kubernetes_cluster" "terraform-k8s" {
     client_secret = var.client_secret
   }
 
-    required_providers {
-    azurerm = {
-      source = "hashicorp/azurerm"
-      version = "~> 2.62.0"
-      configuration_aliases = [azurerm.mcs, azurerm.shared]
-    }
-    azuread = {
-      source = "hashicorp/azuread"
-      version = "~> 1.5.0"
-    }
-  }
+  
   
   tags = {
     Environment = var.environment
